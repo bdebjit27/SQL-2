@@ -8,8 +8,8 @@ FROM (
 WHERE cnt = (
     SELECT MAX(cnt) 
     FROM (
-        SELECT COUNT(*) AS cnt 
-        FROM Orders 
-        GROUP BY customer_number
-    ) AS S
+    SELECT customer_number, COUNT(*) AS cnt 
+    FROM Orders
+    GROUP BY customer_number
+) AS S
 );
